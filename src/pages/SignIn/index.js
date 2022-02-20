@@ -5,8 +5,9 @@ import {ILLogo} from '../../assets';
 import {Button, FormInputField, Gap, TextButton} from '../../components';
 
 import colors from '../../config/colors';
+import fonts from '../../config/fonts';
 
-const SingIn = () => {
+const SingIn = ({navigation}) => {
   const [emailFocus, setEmailFocus] = useState(false);
   const [passwordFocus, setPasswordFocus] = useState(false);
 
@@ -14,56 +15,55 @@ const SingIn = () => {
   const [passwordError, setPasswordError] = useState(false);
 
   return (
-    <ScrollView showsVerticalScrollIndicator={false}>
-      <View style={styles.page}>
-        <ILLogo />
-        <Gap flex={1} />
-        <Text style={styles.text}>{'Masuk dan mulai\nberkonsultasi'}</Text>
-        <Gap height={40} />
-        <FormInputField
-          label="Email Address"
-          autoCapitalize="none"
-          keyboardType="email-address"
-          focused={emailFocus}
-          error={emailError}
-          onFocus={() => setEmailFocus(true)}
-          onBlur={() => setEmailFocus(false)}
-          onChangeText={() => setEmailError(false)}
+    <ScrollView showsVerticalScrollIndicator={false} style={styles.page}>
+      <ILLogo />
+      <Gap flex={1} />
+      <Text style={styles.text}>{'Masuk dan mulai\nberkonsultasi'}</Text>
+      <Gap height={40} />
+      <FormInputField
+        label="Email Address"
+        autoCapitalize="none"
+        keyboardType="email-address"
+        focused={emailFocus}
+        error={emailError}
+        onFocus={() => setEmailFocus(true)}
+        onBlur={() => setEmailFocus(false)}
+        onChangeText={() => setEmailError(false)}
+      />
+      <Gap height={16} />
+      <FormInputField
+        label="Password"
+        autoCapitalize="none"
+        secureTextEntry
+        focused={passwordFocus}
+        error={passwordError}
+        onFocus={() => setPasswordFocus(true)}
+        onBlur={() => setPasswordError(false)}
+        onChangeText={() => setPasswordError(false)}
+      />
+      <Gap height={8} />
+      <TextButton
+        color={colors.grey}
+        size={12}
+        text="Forgot My Password"
+        underline
+        onPress={() => console.log('Forgot Password')}
+      />
+      <Gap height={40} />
+      <View style={styles.buttonContainer}>
+        <Button
+          backgroundColor={colors.green}
+          color={colors.white}
+          text="Sign In"
+          onPress={() => navigation.replace('MainApp')}
         />
-        <Gap height={16} />
-        <FormInputField
-          label="Password"
-          autoCapitalize="none"
-          secureTextEntry
-          focused={passwordFocus}
-          error={passwordError}
-          onFocus={() => setPasswordFocus(true)}
-          onBlur={() => setPasswordError(false)}
-          onChangeText={() => setPasswordError(false)}
-        />
-        <Gap height={8} />
+        <Gap height={30} />
         <TextButton
           color={colors.grey}
           underline
-          text="Forgot My Password"
-          onPress={() => console.log('Forgot Password')}
+          text="Create New Account"
+          onPress={() => console.log('Create New Account')}
         />
-        <Gap height={40} />
-        <View style={styles.buttonContainer}>
-          <Button
-            backgroundColor={colors.green}
-            color={colors.white}
-            onPress={() => console.log('Sign In')}>
-            Sign In
-          </Button>
-          <Gap height={16} />
-          <TextButton
-            color={colors.grey}
-            underline
-            text="Create New Account"
-            onPress={() => console.log('Create New Account')}
-          />
-        </View>
       </View>
     </ScrollView>
   );
@@ -77,14 +77,14 @@ const styles = StyleSheet.create({
   },
   page: {
     flex: 1,
+    backgroundColor: colors.white,
     paddingHorizontal: 40,
-    paddingTop: 40,
-    paddingBottom: 44,
+    paddingVertical: 44,
   },
   text: {
     color: colors.blueDark,
     fontSize: 20,
-    fontFamily: 'Nunito-SemiBold',
+    fontFamily: fonts.semiBold,
     marginTop: 16,
   },
 });

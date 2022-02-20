@@ -1,9 +1,14 @@
 import React from 'react';
+import {NavigationContainer} from '@react-navigation/native';
 
-import {UploadPhoto} from './pages';
+import Router from './router';
 
 const App = () => {
-  return <UploadPhoto />;
+  return (
+    <NavigationContainer>
+      <Router />
+    </NavigationContainer>
+  );
 };
 
 export default App;

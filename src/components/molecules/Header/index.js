@@ -1,19 +1,19 @@
-import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 
-import {IconBackDark} from '../../../assets';
-
 import colors from '../../../config/colors';
+import fonts from '../../../config/fonts';
 
-const Header = ({title, onPress}) => {
+const Header = ({title, Leading, Action}) => {
   return (
     <View style={styles.container}>
-      {onPress && (
-        <TouchableOpacity style={styles.button} onPress={onPress}>
-          <IconBackDark />
-        </TouchableOpacity>
-      )}
-      <Text style={styles.title}>{title}</Text>
+      <Text style={[styles.title]}>{title}</Text>
+      <View style={{position: 'absolute', start: 0, marginStart: 20}}>
+        {Leading}
+      </View>
+      <View style={{position: 'absolute', end: 0, marginEnd: 20}}>
+        {Action}
+      </View>
     </View>
   );
 };
@@ -21,11 +21,6 @@ const Header = ({title, onPress}) => {
 export default Header;
 
 const styles = StyleSheet.create({
-  button: {
-    padding: 16,
-    position: 'absolute',
-    marginStart: 4,
-  },
   container: {
     alignItems: 'center',
     flexDirection: 'row',
@@ -36,7 +31,7 @@ const styles = StyleSheet.create({
     flex: 1,
     color: colors.blueDark,
     fontSize: 20,
-    fontFamily: 'Nunito-SemiBold',
+    fontFamily: fonts.semiBold,
     textAlign: 'center',
   },
 });

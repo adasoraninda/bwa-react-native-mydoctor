@@ -4,6 +4,7 @@ import React from 'react';
 import InputField from '../../atoms/InputField';
 
 import colors from '../../../config/colors';
+import fonts from '../../../config/fonts';
 import {Gap} from '../../atoms';
 
 const FormInputField = ({
@@ -35,6 +36,6 @@ const styles = StyleSheet.create({
   label: {
     color: colors.grey,
     fontSize: 16,
-    fontFamily: 'Nunito-Regular',
+    fontFamily: fonts.regular,
   },
 });

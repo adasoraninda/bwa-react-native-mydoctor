@@ -1,12 +1,19 @@
 import {StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import React, {useEffect} from 'react';
 
 import {ILLogo} from '../../assets';
 import {Gap} from '../../components';
 
 import colors from '../../config/colors';
+import fonts from '../../config/fonts';
 
-const Splash = () => {
+const Splash = ({navigation}) => {
+  useEffect(() => {
+    setTimeout(() => {
+      navigation.replace('GetStarted');
+    }, 2000);
+  }, []);
+
   return (
     <View style={styles.page}>
       <ILLogo />
@@ -27,6 +34,6 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 20,
-    fontFamily: 'Nunito-SemiBold',
+    fontFamily: fonts.semiBold,
   },
 });

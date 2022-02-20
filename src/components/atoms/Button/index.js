@@ -1,25 +1,27 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity,
-  TouchableHighlight,
-} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity} from 'react-native';
 import React from 'react';
 
+import fonts from '../../../config/fonts';
+import colors from '../../../config/colors';
+
 const Button = ({
-  backgroundColor,
-  children,
-  color,
+  backgroundColor = colors.green,
+  color = colors.white,
+  disabled = false,
   onPress,
+  text,
   width = '100%',
 }) => {
+  backgroundColor = disabled ? colors.lightGrey : backgroundColor;
+  color = disabled ? colors.mediumGrey : color;
+
   return (
     <TouchableOpacity
       onPress={onPress}
       activeOpacity={0.7}
+      disabled={disabled}
       style={[styles.container, {backgroundColor, width}]}>
-      <Text style={[styles.text, {color}]}>{children}</Text>
+      <Text style={[styles.text, {color}]}>{text}</Text>
     </TouchableOpacity>
   );
 };
@@ -34,7 +36,7 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 18,
-    fontFamily: 'Nunito-SemiBold',
+    fontFamily: fonts.semiBold,
     textAlign: 'center',
   },
 });

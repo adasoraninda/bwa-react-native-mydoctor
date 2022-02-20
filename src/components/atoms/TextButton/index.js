@@ -1,10 +1,21 @@
 import {StyleSheet, Text, TouchableOpacity} from 'react-native';
 import React from 'react';
 
-const TextButton = ({text, color, underline, onPress}) => {
+import fonts from '../../../config/fonts';
+import colors from '../../../config/colors';
+
+const TextButton = ({
+  color = colors.grey,
+  onPress,
+  size = 16,
+  text,
+  underline,
+}) => {
   return (
     <TouchableOpacity onPress={onPress} style={styles.container}>
-      <Text style={[styles.text(underline), {color}]}>{text}</Text>
+      <Text style={[styles.text(underline), {color, fontSize: size}]}>
+        {text}
+      </Text>
     </TouchableOpacity>
   );
 };
@@ -16,8 +27,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   text: underline => ({
-    fontSize: 16,
-    fontFamily: 'Nunito-Regular',
+    fontFamily: fonts.regular,
     textDecorationLine: underline ? 'underline' : 'none',
   }),
 });
